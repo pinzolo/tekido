@@ -155,4 +155,69 @@ describe Tekido do
       end
     end
   end
+  describe ".list" do
+    context "when size is 10000, values are :one, :two, :three and :four" do
+      let(:list) { Tekido.list(10000, [:one, :two, :three, :four]) }
+      it "returns array" do
+        expect(list).to be_an(Array)
+      end
+      it "returned array size is 10000" do
+        expect(list.size).to eq 10000
+      end
+      it "returned array includes about 25% :one" do
+        expect(list.count { |item| item == :one }).to be_within(2500).of(100)
+      end
+      it "returned array includes about 25% :two" do
+        expect(list.count { |item| item == :two }).to be_within(2500).of(100)
+      end
+      it "returned array includes about 25% :three" do
+        expect(list.count { |item| item == :three }).to be_within(2500).of(100)
+      end
+      it "returned array includes about 25% :four" do
+        expect(list.count { |item| item == :four }).to be_within(2500).of(100)
+      end
+    end
+    context "when size is 10000, values are defined with ratio (one: 11.1, two: 22.2, three: 33.3, four: 33.4)" do
+      let(:list) { Tekido.list(10000, one: 11.1, two: 22.2, three: 33.3, four: 33.4) }
+      it "returns array" do
+        expect(list).to be_an(Array)
+      end
+      it "returned array size is 10000" do
+        expect(list.size).to eq 10000
+      end
+      it "returned array includes about 11.1% :one" do
+        expect(list.count { |item| item == :one }).to be_within(1110).of(100)
+      end
+      it "returned array includes about 22.2% :two" do
+        expect(list.count { |item| item == :two }).to be_within(2220).of(100)
+      end
+      it "returned array includes about 33.3% :three" do
+        expect(list.count { |item| item == :three }).to be_within(3330).of(100)
+      end
+      it "returned array includes about 33.4% :four" do
+        expect(list.count { |item| item == :four }).to be_within(3340).of(100)
+      end
+    end
+    context "when size is 10000, values are defined with ratio (one: 10, two: 20, three: 30)" do
+      let(:list) { Tekido.list(10000, one: 10, two: 20, three: 30) }
+      it "returns array" do
+        expect(list).to be_an(Array)
+      end
+      it "returned array size is 10000" do
+        expect(list.size).to eq 10000
+      end
+      it "returned array includes about 10% :one" do
+        expect(list.count { |item| item == :one }).to be_within(1000).of(100)
+      end
+      it "returned array includes about 20% :two" do
+        expect(list.count { |item| item == :two }).to be_within(2000).of(100)
+      end
+      it "returned array includes about 30% :three" do
+        expect(list.count { |item| item == :three }).to be_within(3000).of(100)
+      end
+      it "returned array includes about 40% nil" do
+        expect(list.count { |item| item.nil? }).to be_within(4000).of(100)
+      end
+    end
+  end
 end

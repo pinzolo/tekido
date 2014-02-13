@@ -27,7 +27,7 @@ Or install it yourself as:
 
 It returns random boolean
 
-```ruby 
+```ruby
 # true: 50%, false 50%
 Tekido.yes?
 
@@ -43,7 +43,7 @@ It retuens random percentage (0..100). It behaves the same as `rand(0..100)`.
 
 It returns random percentage. Can select return value type.
 
-```ruby 
+```ruby
 # returns integer (same as Tekido.percent)
 Tekido.percent_as(:integer)
 
@@ -58,7 +58,7 @@ Tekido.percent_as(:deca)
 
 It always returns random value as integer.
 
-```ruby 
+```ruby
 # returns integer (0 <= value <= 1073741823)
 Tekido.integer
 
@@ -73,7 +73,7 @@ Tekido.integer(1..1234)
 
 It always returns random value as float. The different with `rand` is return value type only.
 
-```ruby 
+```ruby
 # returns float (0 <= value < 1)
 Tekido.float
 
@@ -82,6 +82,21 @@ Tekido.float(777.77)
 
 # returns float that is included in argument
 Tekido.float(1..1234)
+```
+
+## .list
+
+It returns Array instance that is filled by given sample values and ratio.
+
+```ruby
+# 'one': 25%, 'two': 25%, 'three': 25%, 'four': 25%
+Tekido.list(10000, %w(one two three four))
+
+# 'one': 11.1%, 'two': 22.2%, 'three': 33.3%, 'four': 33.4%
+Tekido.list(10000, 'one' => 11.1, 'two' => 22.2, 'three' => 33.3, 'four' => 33.4)
+
+# 'one': 10%, 'two': 20%, 'three': 30%, rests(40%) are nil
+Tekido.list(10000, 'one' => 10, 'two' => 20, 'three' => 30)
 ```
 
 ## Supported ruby versions
