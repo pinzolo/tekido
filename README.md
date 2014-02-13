@@ -84,7 +84,7 @@ Tekido.float(777.77)
 Tekido.float(1..1234)
 ```
 
-## .list
+### .list
 
 It returns Array instance that is filled by given sample values and ratio.
 
