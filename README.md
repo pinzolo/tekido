@@ -41,7 +41,7 @@ It retuens random percentage (0..100). It behaves the same as `rand(0..100)`.
 
 ### .percent_as
 
-It returns randm percentage. Can select return value type.
+It returns random percentage. Can select return value type.
 
 ```ruby 
 # returns integer (same as Tekido.percent)
