@@ -75,13 +75,13 @@ It always returns random value as float. The different with `rand` is return val
 
 ```ruby 
 # returns float (0 <= value < 1)
-Tekido.integer
+Tekido.float
 
 # returns float that not over argument
-Tekido.integer(777.77)
+Tekido.float(777.77)
 
 # returns float that is included in argument
-Tekido.integer(1..1234)
+Tekido.float(1..1234)
 ```
 
 ## Supported ruby versions
