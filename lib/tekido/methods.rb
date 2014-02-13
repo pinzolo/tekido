@@ -55,6 +55,24 @@ module Tekido
         end
       end
 
+      def date(arg = nil)
+        require 'date'
+        if arg.nil?
+          Date.new(integer(9999), integer(12), integer(31))
+        elsif arg.is_a?(Integer)
+          Date.new(arg, integer(12), integer(31))
+        elsif arg.is_a?(Range)
+          if arg.min.is_a?(Integer) && arg.max.is_a?(Integer)
+            Date.new(integer(arg), integer(12), integer(31))
+          elsif arg.min.is_a?(Date) && arg.max.is_a?(Date)
+            valid_day_count = (arg.max - arg.min).to_i
+            arg.min + integer(valid_day_count)
+          end
+        end
+      rescue
+        date(arg)
+      end
+
       private
       def range_and_values_from(value_defs)
         if value_defs.is_a?(Array)

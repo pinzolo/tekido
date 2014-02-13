@@ -99,6 +99,24 @@ Tekido.list(10000, 'one' => 11.1, 'two' => 22.2, 'three' => 33.3, 'four' => 33.4
 Tekido.list(10000, 'one' => 10, 'two' => 20, 'three' => 30)
 ```
 
+### .date
+
+It returns random Date.
+
+```ruby
+# returns Date (0001-01-01 <= value <= 9999-12-31)
+Tekido.date
+
+# returns Date in 2010 year
+Tekido.date(2010)
+
+# returns Date in 1999-2007 year
+Tekido.date(1999..2007)
+
+# returns Date in from 1999-02-21 to 2003-10-07
+Tekido.date(Date.new(1999, 2, 21)..Date.new(2003, 10, 7))
+```
+
 ## Supported ruby versions
 
 * 1.9.3

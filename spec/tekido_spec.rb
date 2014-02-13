@@ -1,5 +1,6 @@
 # coding: utf-8
 require "spec_helper"
+require "date"
 
 describe Tekido do
   describe ".yes?" do
@@ -200,7 +201,7 @@ describe Tekido do
     end
     context "when size is 10000, values are defined with ratio (one: 10, two: 20, three: 30)" do
       let(:list) { Tekido.list(10000, one: 10, two: 20, three: 30) }
-      it "returns array" do
+      it "Greturns array" do
         expect(list).to be_an(Array)
       end
       it "returned array size is 10000" do
@@ -217,6 +218,44 @@ describe Tekido do
       end
       it "returned array includes about 40% nil" do
         expect(list.count { |item| item.nil? }).to be_within(4000).of(100)
+      end
+    end
+  end
+  describe ".date" do
+    context "with no argument" do
+      it "returns Date" do
+        expect(Tekido.date).to be_a(Date)
+      end
+    end
+    context "with integer argument" do
+      let(:date) { Tekido.date(1999) }
+      it "returns Date" do
+        expect(date).to be_a(Date)
+      end
+      it "returned Date's year is 1999" do
+        expect(date.year).to eq 1999
+      end
+    end
+    context "with integer range argument" do
+      it "returns Date" do
+        expect(Tekido.date(1999..2010)).to be_a(Date)
+      end
+      it "returns Date's year is included in argument" do
+        10000.times do
+          expect(1999..2010).to include(Tekido.date(1999..2010).year)
+        end
+      end
+    end
+    context "with Date range argument" do
+      let(:min) { Date.new(1999, 2, 21) }
+      let(:max) { Date.new(2013, 10, 11)}
+      it "returns Date" do
+        expect(Tekido.date(min..max)).to be_a(Date)
+      end
+      it "returns Date is included in argument" do
+        10.times do
+          expect(min..max).to include(Tekido.date(min..max))
+        end
       end
     end
   end
