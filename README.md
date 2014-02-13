@@ -1,6 +1,9 @@
 # Tekido
 
-TODO: Write a gem description
+[![Build Status](https://secure.travis-ci.org/pinzolo/tekido.png)](http://travis-ci.org/pinzolo/tekido)
+[![Coverage Status](https://coveralls.io/repos/pinzolo/tekido/badge.png)](https://coveralls.io/r/pinzolo/tekido)
+
+A handy little random library.
 
 ## Installation
 
@@ -18,7 +21,52 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`Tekido` has below methods.
+
+### .yes?
+
+It returns random boolean
+
+```ruby 
+# true: 50%, false 50%
+Tekido.yes?
+
+# true: 80%, false 20%
+Tekido.yes?(80)
+```
+
+### .percent
+
+It retuens random percentage (0..100). It behaves the same as `rand(0..100)`.
+
+### .percent_as
+
+It returns randm percentage. Can select return value type.
+
+```ruby 
+# returns integer (same as Tekido.percent)
+Tekido.percent_as(:integer)
+
+# returns float
+Tekido.percent_as(:float)
+
+# returns integer that is multiple of 10 (ex. 10, 70)
+Tekido.percent_as(:deca)
+```
+
+### .integer
+
+It returns random value as integer. The different with `rand` is return value type only.
+
+### .float
+
+It returns random value as float. The different with `rand` is return value type only.
+
+## Supported ruby versions
+
+* 1.9.3
+* 2.0.0
+* 2.1.0
 
 ## Contributing
 
