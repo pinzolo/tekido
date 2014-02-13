@@ -26,12 +26,19 @@ module Tekido
         end
       end
 
-      def integer(arg)
-        rand(arg).to_i
+      def integer(arg = nil)
+        if arg.nil?
+          max = 2 ** 30 -1
+          rand(0..max)
+        else
+          rand(arg).to_i
+        end
       end
 
-      def float(arg)
-        if arg.is_a?(Range)
+      def float(arg = nil)
+        if arg.nil?
+          rand
+        elsif arg.is_a?(Range)
           rand(Range.new(arg.min.to_f, arg.max.to_f))
         else
           rand * arg.to_f

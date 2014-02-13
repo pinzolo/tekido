@@ -56,11 +56,33 @@ Tekido.percent_as(:deca)
 
 ### .integer
 
-It returns random value as integer. The different with `rand` is return value type only.
+It always returns random value as integer.
+
+```ruby 
+# returns integer (0 <= value <= 1073741823)
+Tekido.integer
+
+# returns integer that not over argument
+Tekido.integer(9999)
+
+# returns integer that is included in argument
+Tekido.integer(1..1234)
+```
 
 ### .float
 
-It returns random value as float. The different with `rand` is return value type only.
+It always returns random value as float. The different with `rand` is return value type only.
+
+```ruby 
+# returns float (0 <= value < 1)
+Tekido.integer
+
+# returns float that not over argument
+Tekido.integer(777.77)
+
+# returns float that is included in argument
+Tekido.integer(1..1234)
+```
 
 ## Supported ruby versions
 
