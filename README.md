@@ -117,6 +117,19 @@ Tekido.date(1999..2007)
 Tekido.date(Date.new(1999, 2, 21)..Date.new(2003, 10, 7))
 ```
 
+### .birthday
+
+It returns random birthday.
+
+```ruby
+# returns birthday within from 100 years to today
+Tekido.birthday
+
+Tekido.birthday(28)
+
+Tekido.birthday(21..25)
+```
+
 ## Supported ruby versions
 
 * 1.9.3

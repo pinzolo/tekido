@@ -73,6 +73,22 @@ module Tekido
         date(arg)
       end
 
+      def birthday(arg = nil)
+        require 'date'
+        if arg.nil?
+          min = Date.today << 12 * 100
+          date(min..Date.today)
+        elsif arg.is_a?(Integer)
+          min = (Date.today << 12 * (arg + 1)) + 1
+          max = Date.today << 12 * arg
+          date(min..max)
+        elsif arg.is_a?(Range) && arg.min.is_a?(Integer) && arg.max.is_a?(Integer)
+          min = (Date.today << 12 * (arg.min + 1)) + 1
+          max = Date.today << 12 * arg.max
+          date(min..max)
+        end
+      end
+
       private
       def range_and_values_from(value_defs)
         if value_defs.is_a?(Array)
