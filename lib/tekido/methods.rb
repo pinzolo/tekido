@@ -4,6 +4,7 @@ require "tekido/methods/boolean"
 require "tekido/methods/numeric"
 require "tekido/methods/array"
 require "tekido/methods/date"
+require "tekido/methods/string"
 
 module Tekido
   module Methods
