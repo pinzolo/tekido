@@ -149,6 +149,22 @@ Tekido.string(size: 10, components: [:upper, :number])
 Tekido.string(size: 8..16, chars: %w(1 3 5 7 9 x y z))
 ```
 
+### email
+
+It returns random email address.
+
+```ruby
+# returns email address that has example domain. (ex. eamh0aga@example.com)
+Tekido.email
+
+# returns email address that has given domain. (ex. oiuade@foobar.com)
+Tekido.email('foobar.com')
+
+# returns email address that has same domain as given email address. (ex. dkauy3akhf@baz.com)
+Tekido.email("foo.bar@baz.com")
+```
+
+
 ## Supported ruby versions
 
 * 1.9.3

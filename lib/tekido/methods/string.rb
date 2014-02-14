@@ -5,6 +5,9 @@ module Tekido
       UPPER_CHARS = ('A'..'Z').to_a
       LOWER_CHARS = ('a'..'z').to_a
       NUMBER_CHARS = ('0'..'9').to_a
+      EXAMPLE_DOMAINS = ["example.com", "exmple.net", "example.org"] +
+                        ["example.jp", "example.co.jp", "example.ne.jp"] +
+                        (0..9).map { |i| ["example#{i}.jp", "example#{i}.co.jp", "example#{i}.ne.jp"] }.flatten
 
       def string(options = {})
         size = size_from(options[:size])
@@ -15,6 +18,10 @@ module Tekido
             str << chars.sample
           end
         end
+      end
+
+      def email(base = nil)
+        "#{string(size: 3..32, components: [:lower, :number])}@#{email_domain(base)}"
       end
 
       private
@@ -47,6 +54,14 @@ module Tekido
           chars += NUMBER_CHARS
         end
         chars.empty? ? base_chars : chars
+      end
+
+      def email_domain(base)
+        if base.nil?
+          EXAMPLE_DOMAINS.sample
+        else
+          base[base.index('@').to_i..base.size]
+        end
       end
     end
   end

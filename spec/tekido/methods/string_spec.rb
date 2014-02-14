@@ -1,6 +1,9 @@
 # coding: utf-8
 require "spec_helper"
 
+EXAMPLE_DOMAINS = ["example.com", "exmple.net", "example.org", "example.jp", "example.co.jp", "example.ne.jp"] +
+  (0..9).map { |i| ["example#{i}.jp", "example#{i}.co.jp", "example#{i}.ne.jp"] }.flatten
+
 describe Tekido::Methods do
   describe "string methods"do
     describe ".string" do
@@ -143,6 +146,59 @@ describe Tekido::Methods do
         it "returned string is constructed by chars option value (components option value is ignored)" do
           TRY_COUNT.times do
             expect(Tekido.string(components: [:upper, :lower], chars: %w(1 3 5 7 9))).to match(/\A[13579]+\z/)
+          end
+        end
+      end
+    end
+    describe ".email" do
+      context "with no argument" do
+        it "returns string as email address" do
+          expect(Tekido.email).to be_a(String)
+        end
+        it "returns email address that has size within 3..32" do
+          TRY_COUNT.times do
+            expect(3..32).to include(Tekido.email.index("@"))
+          end
+        end
+        it "returns email address that end with example domain" do
+          TRY_COUNT.times do
+            email = Tekido.email
+            expect(EXAMPLE_DOMAINS).to include(email[email.index('@')+1..email.size])
+          end
+        end
+      end
+      context "with domain string argument" do
+        it "returns string as email address" do
+          expect(Tekido.email("foobar.com")).to be_a(String)
+        end
+        it "returns email address that has size within 3..32" do
+          TRY_COUNT.times do
+            expect(3..32).to include(Tekido.email("foobar.com").index("@"))
+          end
+        end
+        it "returns email address that end with given domain" do
+          TRY_COUNT.times do
+            expect(Tekido.email("foobar.com")).to end_with("foobar.com")
+          end
+        end
+      end
+      context "with base address argument" do
+        it "returns string" do
+          expect(Tekido.email("foo.bar@baz.com")).to be_a(String)
+        end
+        it "returns email address that has size within 3..32" do
+          TRY_COUNT.times do
+            expect(3..32).to include(Tekido.email("foo.bar@baz.com").index("@"))
+          end
+        end
+        it "returns email address that end with given domain" do
+          TRY_COUNT.times do
+            expect(Tekido.email("foo.bar@baz.com")).to end_with("baz.com")
+          end
+        end
+        it "returns email address that not equals given mail" do
+          TRY_COUNT.times do
+            expect(Tekido.email("foo.bar@baz.com")).to end_with("baz.com")
           end
         end
       end
