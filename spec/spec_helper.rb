@@ -26,7 +26,7 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-TRY_COUNT = 10000
+TRY_COUNT = 100000
 ACCIDENTAL_RATE = 0.01
 ACCIDENTAL_COUNT = TRY_COUNT * ACCIDENTAL_RATE
 
