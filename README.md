@@ -25,13 +25,13 @@ Or install it yourself as:
 
 ### .yes?
 
-It returns random boolean
+It returns random boolean.
 
 ```ruby
-# true: 50%, false 50%
+# true: 50%, false: 50%
 Tekido.yes?
 
-# true: 80%, false 20%
+# true: 80%, false: 20%
 Tekido.yes?(80)
 ```
 
@@ -44,7 +44,7 @@ It retuens random percentage (0..100). It behaves the same as `rand(0..100)`.
 It returns random percentage. Can select return value type.
 
 ```ruby
-# returns integer (same as Tekido.percent)
+# returns integer (Tekido.percent behaves it, too)
 Tekido.percent_as(:integer)
 
 # returns float
@@ -101,7 +101,7 @@ Tekido.list(10000, 'one' => 10, 'two' => 20, 'three' => 30)
 
 ### .date
 
-It returns random Date.
+It returns random Date instance.
 
 ```ruby
 # returns Date (0001-01-01 <= value <= 9999-12-31)
@@ -119,7 +119,7 @@ Tekido.date(Date.new(1999, 2, 21)..Date.new(2003, 10, 7))
 
 ### .birthday
 
-It returns random birthday.
+It returns random birthday as Date instance.
 
 ```ruby
 # returns birthday satisfying that current age is more than 0 and less than 100
