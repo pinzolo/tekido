@@ -126,16 +126,16 @@ describe Tekido::Methods do
       end
       context "with size and chars options" do
         it "returns string" do
-          expect(Tekido.string(size: 8..16, chars: "String".chars)).to be_a(String)
+          expect(Tekido.string(size: 8..16, chars: "String".chars.to_a)).to be_a(String)
         end
         it "returned string length is within 8..16" do
           TRY_COUNT.times do
-            expect(8..16).to include(Tekido.string(size: 8..16, chars: "String".chars).size)
+            expect(8..16).to include(Tekido.string(size: 8..16, chars: "String".chars.to_a).size)
           end
         end
-        it "returned string is constructed by lower chars and numeric chars" do
+        it "returned string is constructed by given characters" do
           TRY_COUNT.times do
-            expect(Tekido.string(size: 8..16, chars: "String".chars)).to match(/\A[String]+\z/)
+            expect(Tekido.string(size: 8..16, chars: "String".chars.to_a)).to match(/\A[String]+\z/)
           end
         end
       end
