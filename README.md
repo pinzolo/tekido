@@ -132,6 +132,23 @@ Tekido.birthday(28)
 Tekido.birthday(21..25)
 ```
 
+### .string
+
+It returns random String instance.
+
+```ruby
+# returns String instance that is costructed by upper characters, lower characters and numeric characters, and size is within 1..255.
+Tekido.string
+
+# returns String instance that is costructed by lower characters and numeric characters, and size is 10.
+# components option accepts :upper or :lower or :number or combination of these.
+Tekido.string(size: 10, components: [:upper, :number])
+
+# returns String instance that is costructed by given characters (ex. x39yyz177x) , and size is within 8..16.
+# chars option overrides components option
+Tekido.string(size: 8..16, chars: %w(1 3 5 7 9 x y z))
+```
+
 ## Supported ruby versions
 
 * 1.9.3
