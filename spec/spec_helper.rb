@@ -25,3 +25,11 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+TRY_COUNT = 10000
+ACCIDENTAL_RATE = 0.01
+ACCIDENTAL_COUNT = TRY_COUNT * ACCIDENTAL_RATE
+
+def valid_count(percent)
+  TRY_COUNT / 100 * percent
+end
