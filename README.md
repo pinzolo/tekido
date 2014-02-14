@@ -89,13 +89,13 @@ Tekido.float(1..1234)
 It returns Array instance that is filled by given sample values and ratio.
 
 ```ruby
-# retuerns Array instance that contains 'one': 25%, 'two': 25%, 'three': 25%, 'four': 25%
+# returns Array instance that contains 'one': 25%, 'two': 25%, 'three': 25%, 'four': 25%
 Tekido.list(10000, %w(one two three four))
 
-# retuerns Array instance that contains 'one': 11.1%, 'two': 22.2%, 'three': 33.3%, 'four': 33.4%
+# returns Array instance that contains 'one': 11.1%, 'two': 22.2%, 'three': 33.3%, 'four': 33.4%
 Tekido.list(10000, 'one' => 11.1, 'two' => 22.2, 'three' => 33.3, 'four' => 33.4)
 
-# retuerns Array instance that contains 'one': 10%, 'two': 20%, 'three': 30%, nil: 40% (rests)
+# returns Array instance that contains 'one': 10%, 'two': 20%, 'three': 30%, nil: 40% (rests)
 Tekido.list(10000, 'one' => 10, 'two' => 20, 'three' => 30)
 ```
 
