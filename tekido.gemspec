@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Tekido::VERSION
   spec.authors       = ["pinzolo"]
   spec.email         = ["pinzolo@gmail.com"]
-  spec.description   = %q{A handy little random library}
-  spec.summary       = spec.description
+  spec.description   = %q{`Tekido` generates various random value.}
+  spec.summary       = %q{A handy little random value generator.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

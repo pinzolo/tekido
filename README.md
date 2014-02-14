@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/pinzolo/tekido.png)](http://travis-ci.org/pinzolo/tekido)
 [![Coverage Status](https://coveralls.io/repos/pinzolo/tekido/badge.png)](https://coveralls.io/r/pinzolo/tekido)
 
-A handy little random library.
+`Tekido` generates various random value.
 
 ## Installation
 
