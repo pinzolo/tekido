@@ -13,7 +13,7 @@ describe Tekido::Methods do
             expect(1..255).to include(Tekido.string.size)
           end
         end
-        it "returned string is constructed by upper chars and lower chars and number chars" do
+        it "returned string is constructed by upper chars and lower chars and numeric chars" do
           TRY_COUNT.times do
             expect(Tekido.string).to match(/\A[a-zA-Z0-9]+\z/)
           end
@@ -28,7 +28,7 @@ describe Tekido::Methods do
             expect(Tekido.string(size: 10).size).to eq 10
           end
         end
-        it "returned string is constructed by upper chars and lower chars and number chars" do
+        it "returned string is constructed by upper chars and lower chars and numeric chars" do
           TRY_COUNT.times do
             expect(Tekido.string(size: 10)).to match(/\A[a-zA-Z0-9]+\z/)
           end
@@ -43,7 +43,7 @@ describe Tekido::Methods do
             expect(8..16).to include(Tekido.string(size: 8..16).size)
           end
         end
-        it "returned string is constructed by upper chars and lower chars and number chars" do
+        it "returned string is constructed by upper chars and lower chars and numeric chars" do
           TRY_COUNT.times do
             expect(Tekido.string(size: 8..16)).to match(/\A[a-zA-Z0-9]+\z/)
           end
@@ -68,7 +68,7 @@ describe Tekido::Methods do
           end
         end
         context "components value is :number" do
-          it "returned string is constructed by number chars" do
+          it "returned string is constructed by numeric chars" do
             TRY_COUNT.times do
               expect(Tekido.string(components: :number)).to match(/\A[0-9]+\z/)
             end
@@ -82,14 +82,14 @@ describe Tekido::Methods do
           end
         end
         context "components value is :lower and :number" do
-          it "returned string is constructed by lower chars and number chars" do
+          it "returned string is constructed by lower chars and numeric chars" do
             TRY_COUNT.times do
               expect(Tekido.string(components: [:lower, :number])).to match(/\A[a-z0-9]+\z/)
             end
           end
         end
         context "components value is :upper and :number" do
-          it "returned string is constructed by upper chars and number chars" do
+          it "returned string is constructed by upper chars and numeric chars" do
             TRY_COUNT.times do
               expect(Tekido.string(components: [:upper, :number])).to match(/\A[A-Z0-9]+\z/)
             end
@@ -115,7 +115,7 @@ describe Tekido::Methods do
             expect(8..16).to include(Tekido.string(size: 8..16, components: [:lower, :number]).size)
           end
         end
-        it "returned string is constructed by lower chars and number chars" do
+        it "returned string is constructed by lower chars and numeric chars" do
           TRY_COUNT.times do
             expect(Tekido.string(size: 8..16, components: [:lower, :number])).to match(/\A[a-z0-9]+\z/)
           end
@@ -130,7 +130,7 @@ describe Tekido::Methods do
             expect(8..16).to include(Tekido.string(size: 8..16, chars: "String".chars).size)
           end
         end
-        it "returned string is constructed by lower chars and number chars" do
+        it "returned string is constructed by lower chars and numeric chars" do
           TRY_COUNT.times do
             expect(Tekido.string(size: 8..16, chars: "String".chars)).to match(/\A[String]+\z/)
           end
