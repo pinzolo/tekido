@@ -165,12 +165,12 @@ describe Tekido do
     end
   end
   describe ".list" do
-    context "when size is TRY_COUNT, values are :one, :two, :three and :four" do
+    context "when size is #{TRY_COUNT}, values are :one, :two, :three and :four" do
       let(:list) { Tekido.list(TRY_COUNT, [:one, :two, :three, :four]) }
       it "returns array" do
         expect(list).to be_an(Array)
       end
-      it "returned array size is TRY_COUNT" do
+      it "returned array size is #{TRY_COUNT}" do
         expect(list.size).to eq TRY_COUNT
       end
       it "returned array includes about 25% :one" do
@@ -186,12 +186,12 @@ describe Tekido do
         expect(list.count { |item| item == :four }).to be_within(valid_count(25)).of(ACCIDENTAL_COUNT)
       end
     end
-    context "when size is TRY_COUNT, values are defined with ratio (one: 11.1, two: 22.2, three: 33.3, four: 33.4)" do
+    context "when size is #{TRY_COUNT}, values are defined with ratio (one: 11.1, two: 22.2, three: 33.3, four: 33.4)" do
       let(:list) { Tekido.list(TRY_COUNT, one: 11.1, two: 22.2, three: 33.3, four: 33.4) }
       it "returns array" do
         expect(list).to be_an(Array)
       end
-      it "returned array size is TRY_COUNT" do
+      it "returned array size is #{TRY_COUNT}" do
         expect(list.size).to eq TRY_COUNT
       end
       it "returned array includes about 11.1% :one" do
@@ -207,12 +207,12 @@ describe Tekido do
         expect(list.count { |item| item == :four }).to be_within(valid_count(33.4)).of(ACCIDENTAL_COUNT)
       end
     end
-    context "when size is TRY_COUNT, values are defined with ratio (one: 10, two: 20, three: 30)" do
+    context "when size is #{TRY_COUNT}, values are defined with ratio (one: 10, two: 20, three: 30)" do
       let(:list) { Tekido.list(TRY_COUNT, one: 10, two: 20, three: 30) }
       it "Greturns array" do
         expect(list).to be_an(Array)
       end
-      it "returned array size is TRY_COUNT" do
+      it "returned array size is #{TRY_COUNT}" do
         expect(list.size).to eq TRY_COUNT
       end
       it "returned array includes about 10% :one" do
@@ -272,7 +272,7 @@ describe Tekido do
       it "returns Date" do
         expect(Tekido.birthday).to be_a(Date)
       end
-      it "returned Date is included in from 100 years ago to today" do
+      it "returned Date satisfy that current age is more than 0 and less than 100" do
         min = Date.today << 12 * 100
         TRY_COUNT.times do
           expect(min..Date.today).to include(Tekido.birthday)
@@ -296,9 +296,9 @@ describe Tekido do
       it "returns Date" do
         expect(Tekido.birthday(20..25)).to be_a(Date)
       end
-      it "age is included in argument" do
-        min = (Date.today << 12 * 21) + 1
-        max = Date.today << 12 * 25
+      it "returned Date satisfy that current age is included in argument" do
+        min = (Date.today << 12 * 26) + 1
+        max = Date.today << 12 * 20
         TRY_COUNT.times do
           expect(min..max).to include(Tekido.birthday(20..25))
         end

@@ -83,8 +83,8 @@ module Tekido
           max = Date.today << 12 * arg
           date(min..max)
         elsif arg.is_a?(Range) && arg.min.is_a?(Integer) && arg.max.is_a?(Integer)
-          min = (Date.today << 12 * (arg.min + 1)) + 1
-          max = Date.today << 12 * arg.max
+          min = (Date.today << 12 * (arg.max + 1)) + 1
+          max = Date.today << 12 * arg.min
           date(min..max)
         end
       end

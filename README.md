@@ -107,13 +107,13 @@ It returns random Date.
 # returns Date (0001-01-01 <= value <= 9999-12-31)
 Tekido.date
 
-# returns Date in 2010 year
+# returns Date (2010-01-01 <= value <= 2010-12-31)
 Tekido.date(2010)
 
-# returns Date in 1999-2007 year
+# returns Date (1999-01-01 <= value <= 2007-12-31)
 Tekido.date(1999..2007)
 
-# returns Date in from 1999-02-21 to 2003-10-07
+# returns Date (1999-02-21 <= value <= 2003-10-07)
 Tekido.date(Date.new(1999, 2, 21)..Date.new(2003, 10, 7))
 ```
 
@@ -122,11 +122,13 @@ Tekido.date(Date.new(1999, 2, 21)..Date.new(2003, 10, 7))
 It returns random birthday.
 
 ```ruby
-# returns birthday within from 100 years to today
+# returns birthday satisfying that current age is more than 0 and less than 100
 Tekido.birthday
 
+# returns birthday satisfying that current age is given argument
 Tekido.birthday(28)
 
+# returns birthday satisfying that current age is within given argument
 Tekido.birthday(21..25)
 ```
 
