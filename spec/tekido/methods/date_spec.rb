@@ -37,7 +37,9 @@ describe Tekido::Methods do
         end
         it "returned Date is included in argument" do
           TRY_COUNT.times do
-            expect(min..max).to include(Tekido.date(min..max))
+            date = Tekido.date(min..max)
+            expect(date).to be >= min
+            expect(date).to be <= max
           end
         end
       end
@@ -50,7 +52,9 @@ describe Tekido::Methods do
         it "returned Date satisfy that current age is more than 0 and less than 100" do
           min = Date.today << 12 * 100
           TRY_COUNT.times do
-            expect(min..Date.today).to include(Tekido.birthday)
+            date = Tekido.birthday
+            expect(date).to be >= min
+            expect(date).to be <= Date.today
           end
         end
       end
@@ -63,7 +67,9 @@ describe Tekido::Methods do
           min = (Date.today << 12 * (age + 1)) + 1
           max = Date.today << 12 * age
           TRY_COUNT.times do
-            expect(min..max).to include(Tekido.birthday(age))
+            date = Tekido.birthday(age)
+            expect(date).to be >= min
+            expect(date).to be <= max
           end
         end
       end
@@ -75,7 +81,9 @@ describe Tekido::Methods do
           min = (Date.today << 12 * 26) + 1
           max = Date.today << 12 * 20
           TRY_COUNT.times do
-            expect(min..max).to include(Tekido.birthday(20..25))
+            date = Tekido.birthday(20..25)
+            expect(date).to be >= min
+            expect(date).to be <= max
           end
         end
       end
