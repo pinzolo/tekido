@@ -7,6 +7,10 @@ describe Tekido::Methods do
       it "returns integer" do
         expect(Tekido.percent).to be_an(Integer)
       end
+      it "at random uniformly" do
+        list = TRY_COUNT.times.map { Tekido.percent }
+        expect(list.uniq.size).to be >= expected_count(101)
+      end
       it "returns value in range of 0..100" do
         TRY_COUNT.times do
           expect(0..100).to include(Tekido.percent)
@@ -18,6 +22,10 @@ describe Tekido::Methods do
         it "returns float" do
           expect(Tekido.percent_as(:float)).to be_a(Float)
         end
+        it "at random uniformly" do
+          list = TRY_COUNT.times.map { Tekido.percent_as(:float) }
+          expect(list.uniq.size).to be >= expected_count
+        end
         it "returns value in range of 0..100" do
           TRY_COUNT.times do
             expect(0..100).to include(Tekido.percent_as(:float))
@@ -28,6 +36,10 @@ describe Tekido::Methods do
         it "returns integer" do
           expect(Tekido.percent_as(:integer)).to be_an(Integer)
         end
+        it "at random uniformly" do
+          list = TRY_COUNT.times.map { Tekido.percent_as(:integer) }
+          expect(list.uniq.size).to be >= expected_count(101)
+        end
         it "returns value in range of 0..100" do
           TRY_COUNT.times do
             expect(0..100).to include(Tekido.percent_as(:integer))
@@ -37,6 +49,10 @@ describe Tekido::Methods do
       context "with :mo5 argument" do
         it "returns integer" do
           expect(Tekido.percent_as(:mo5)).to be_an(Integer)
+        end
+        it "at random uniformly" do
+          list = TRY_COUNT.times.map { Tekido.percent_as(:mo5) }
+          expect(list.uniq.size).to be >= expected_count(21)
         end
         it "returns multiple of 5" do
           TRY_COUNT.times do
@@ -49,6 +65,10 @@ describe Tekido::Methods do
         it "returns integer" do
           expect(Tekido.percent_as(:deca)).to be_an(Integer)
         end
+        it "at random uniformly" do
+          list = TRY_COUNT.times.map { Tekido.percent_as(:deca) }
+          expect(list.uniq.size).to be >= expected_count(11)
+        end
         it "returns multiple of 10" do
           TRY_COUNT.times do
             expecteds = 0.upto(10).map { |i| i * 10 }
@@ -59,6 +79,10 @@ describe Tekido::Methods do
       context "with :mo10 argument" do
         it "returns integer" do
           expect(Tekido.percent_as(:mo10)).to be_an(Integer)
+        end
+        it "at random uniformly" do
+          list = TRY_COUNT.times.map { Tekido.percent_as(:mo10) }
+          expect(list.uniq.size).to be >= expected_count(11)
         end
         it "returns multiple of 10" do
           TRY_COUNT.times do

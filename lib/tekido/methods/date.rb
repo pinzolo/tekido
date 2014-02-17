@@ -22,7 +22,7 @@ module Tekido
 
       def birthday(arg = nil)
         if arg.nil?
-          min = Date.today << 12 * 100
+          min = (Date.today << 12 * 101) + 1
           date(min..Date.today)
         elsif arg.is_a?(Integer)
           min = (Date.today << 12 * (arg + 1)) + 1

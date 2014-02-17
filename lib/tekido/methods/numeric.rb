@@ -4,7 +4,7 @@ module Tekido
     module ClassMethods
       def integer(arg = nil)
         if arg.nil?
-          max = 2 ** 30 -1
+          max = 2 ** 30 - 1
           rand(0..max)
         else
           rand(arg).to_i

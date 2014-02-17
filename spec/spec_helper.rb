@@ -33,3 +33,8 @@ ACCIDENTAL_COUNT = TRY_COUNT * ACCIDENTAL_RATE
 def valid_count(percent)
   TRY_COUNT / 100 * percent
 end
+
+def expected_count(range_size = nil)
+  total = range_size && TRY_COUNT > range_size ? range_size : TRY_COUNT
+  (total * 0.9).to_i
+end
