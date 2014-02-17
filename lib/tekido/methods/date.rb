@@ -5,20 +5,19 @@ module Tekido
   module Methods
     module ClassMethods
       def date(arg = nil)
+        min, max = nil, nil
         if arg.nil?
-          Date.new(integer(9999), integer(12), integer(31))
+          min, max = Date.new(1, 1, 1), Date.new(9999, 12, 31)
         elsif arg.is_a?(Integer)
-          Date.new(arg, integer(12), integer(31))
+          min, max = Date.new(arg, 1, 1), Date.new(arg, 12, 31)
         elsif arg.is_a?(Range)
           if arg.min.is_a?(Integer) && arg.max.is_a?(Integer)
-            Date.new(integer(arg), integer(12), integer(31))
+            min, max = Date.new(arg.min, 1, 1), Date.new(arg.max, 12, 31)
           elsif arg.min.is_a?(Date) && arg.max.is_a?(Date)
-            valid_day_count = (arg.max - arg.min).to_i
-            arg.min + integer(valid_day_count)
+            min, max = arg.min, arg.max
           end
         end
-      rescue
-        date(arg)
+        min ? min + integer((max - min).to_i) : nil
       end
 
       def birthday(arg = nil)
