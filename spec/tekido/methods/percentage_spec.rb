@@ -34,6 +34,17 @@ describe Tekido::Methods do
           end
         end
       end
+      context "with :mo5 argument" do
+        it "returns integer" do
+          expect(Tekido.percent_as(:mo5)).to be_an(Integer)
+        end
+        it "returns multiple of 5" do
+          TRY_COUNT.times do
+            expecteds = 0.upto(20).map { |i| i * 5 }
+            expect(expecteds).to include(Tekido.percent_as(:mo5))
+          end
+        end
+      end
       context "with :deca argument" do
         it "returns integer" do
           expect(Tekido.percent_as(:deca)).to be_an(Integer)
@@ -42,6 +53,17 @@ describe Tekido::Methods do
           TRY_COUNT.times do
             expecteds = 0.upto(10).map { |i| i * 10 }
             expect(expecteds).to include(Tekido.percent_as(:deca))
+          end
+        end
+      end
+      context "with :mo10 argument" do
+        it "returns integer" do
+          expect(Tekido.percent_as(:mo10)).to be_an(Integer)
+        end
+        it "returns multiple of 10" do
+          TRY_COUNT.times do
+            expecteds = 0.upto(10).map { |i| i * 10 }
+            expect(expecteds).to include(Tekido.percent_as(:mo10))
           end
         end
       end

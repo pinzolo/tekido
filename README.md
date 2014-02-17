@@ -50,8 +50,12 @@ Tekido.percent_as(:integer)
 # returns float
 Tekido.percent_as(:float)
 
+# returns integer that is multiple of 5 (ex. 10, 35)
+Tekido.percent_as(:mo5)
+
 # returns integer that is multiple of 10 (ex. 10, 70)
 Tekido.percent_as(:deca)
+Tekido.percent_as(:mo10)
 ```
 
 ### .integer

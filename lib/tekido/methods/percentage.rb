@@ -13,7 +13,9 @@ module Tekido
           per
         when :integer
           per.to_i
-        when :deca
+        when :mo5
+          per.to_i / 5 * 5
+        when :deca, :mo10
           per.to_i / 10 * 10
         end
       end
