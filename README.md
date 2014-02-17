@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/pinzolo/tekido.png)](http://travis-ci.org/pinzolo/tekido)
 [![Coverage Status](https://coveralls.io/repos/pinzolo/tekido/badge.png)](https://coveralls.io/r/pinzolo/tekido)
 
-`Tekido` generates various random value.
+`Tekido` is a module that generates various random value.
 
 ## Installation
 
@@ -86,6 +86,7 @@ Tekido.float(777.77)
 
 # returns float that is included in argument
 Tekido.float(1..1234)
+Tekido.float(1.1..1234.5)
 ```
 
 ### .list
@@ -166,6 +167,9 @@ Tekido.email('foobar.com')
 
 # returns email address that has same domain as given email address. (ex. dkauy3akhf@baz.com)
 Tekido.email("foo.bar@baz.com")
+
+# .email accepts multiple domains or base email addresses.
+Tekido.email('test@foo.com', 'bar.com', '@baz.com')
 ```
 
 

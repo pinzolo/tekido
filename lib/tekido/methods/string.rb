@@ -20,8 +20,10 @@ module Tekido
         end
       end
 
-      def email(base = nil)
-        "#{string(size: 3..32, components: [:lower, :number])}@#{email_domain(base)}"
+      def email(*bases)
+        local = string(size: 3..32, components: [:lower, :number])
+        domains = bases.empty? ? EXAMPLE_DOMAINS : bases.map { |b| b.index("@") ? b[b.index('@').to_i+1..b.size] : b }
+        "#{local}@#{domains.sample}"
       end
 
       private
@@ -54,14 +56,6 @@ module Tekido
           chars += NUMBER_CHARS
         end
         chars.empty? ? base_chars : chars
-      end
-
-      def email_domain(base)
-        if base.nil?
-          EXAMPLE_DOMAINS.sample
-        else
-          base[base.index('@').to_i..base.size]
-        end
       end
     end
   end

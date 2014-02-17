@@ -202,6 +202,23 @@ describe Tekido::Methods do
           end
         end
       end
+      context "with multiple address arguments" do
+        it "returns string" do
+          expect(Tekido.email("test@foo.com", "bar.com", "@baz.com")).to be_a(String)
+        end
+        it "returns email address that has size within 3..32" do
+          TRY_COUNT.times do
+            expect(3..32).to include(Tekido.email("test@foo.com", "bar.com", "@baz.com").index("@"))
+          end
+        end
+        it "returns email address that end with given domain" do
+          TRY_COUNT.times do
+            email = Tekido.email("test@foo.com", "bar.com", "@baz.com")
+            expected_domains = ["foo.com", "bar.com", "baz.com"]
+            expect(expected_domains).to include(email[email.index("@")+1..email.length])
+          end
+        end
+      end
     end
   end
 end
