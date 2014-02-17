@@ -15,7 +15,7 @@ module Tekido
         if arg.nil?
           rand
         elsif arg.is_a?(Range)
-          rand(Range.new(arg.min.to_f, arg.max.to_f))
+          rand(arg.min.to_f..arg.max.to_f)
         else
           rand * arg.to_f
         end

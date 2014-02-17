@@ -11,9 +11,9 @@ module Tekido
         elsif arg.is_a?(Integer)
           min, max = Date.new(arg, 1, 1), Date.new(arg, 12, 31)
         elsif arg.is_a?(Range)
-          if arg.min.is_a?(Integer) && arg.max.is_a?(Integer)
+          if arg.min.is_a?(Integer)
             min, max = Date.new(arg.min, 1, 1), Date.new(arg.max, 12, 31)
-          elsif arg.min.is_a?(Date) && arg.max.is_a?(Date)
+          elsif arg.min.is_a?(Date)
             min, max = arg.min, arg.max
           end
         end
@@ -28,7 +28,7 @@ module Tekido
           min = (Date.today << 12 * (arg + 1)) + 1
           max = Date.today << 12 * arg
           date(min..max)
-        elsif arg.is_a?(Range) && arg.min.is_a?(Integer) && arg.max.is_a?(Integer)
+        elsif arg.is_a?(Range) && arg.min.is_a?(Integer)
           min = (Date.today << 12 * (arg.max + 1)) + 1
           max = Date.today << 12 * arg.min
           date(min..max)
