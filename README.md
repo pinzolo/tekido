@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-`Tekido` has below methods.
+`Tekido` has below methods. (All methods are dependent on `Kernel.rand`)
 
 ### .yes?
 
