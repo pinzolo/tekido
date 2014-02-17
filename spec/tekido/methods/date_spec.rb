@@ -41,6 +41,11 @@ describe Tekido::Methods do
           end
         end
       end
+      context "with invalid argument" do
+        it "returns nil" do
+          expect(Tekido.date("2010")).to be_nil
+        end
+      end
     end
     describe ".birthday" do
       context "with no argument" do
@@ -77,6 +82,11 @@ describe Tekido::Methods do
           TRY_COUNT.times do
             expect(min..max).to cover(Tekido.birthday(20..25))
           end
+        end
+      end
+      context "with invalid argument" do
+        it "returns nil" do
+          expect(Tekido.birthday("30")).to be_nil
         end
       end
     end

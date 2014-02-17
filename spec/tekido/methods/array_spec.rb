@@ -48,7 +48,7 @@ describe Tekido::Methods do
       end
       context "when size is #{TRY_COUNT}, values are defined with ratio (one: 10, two: 20, three: 30)" do
         let(:list) { Tekido.list(TRY_COUNT, one: 10, two: 20, three: 30) }
-        it "Greturns array" do
+        it "returns array" do
           expect(list).to be_an(Array)
         end
         it "returned array size is #{TRY_COUNT}" do
@@ -65,6 +65,15 @@ describe Tekido::Methods do
         end
         it "returned array includes about 40% nil" do
           expect(list.count { |item| item.nil? }).to be_within(valid_count(40)).of(ACCIDENTAL_COUNT)
+        end
+      end
+      context "when invalid value_defs " do
+        let(:list) { Tekido.list(TRY_COUNT, "aaaa") }
+        it "returns array" do
+          expect(list).to be_an(Array)
+        end
+        it "returned array is filled by nil" do
+          expect(list.any?).to eq false
         end
       end
     end
