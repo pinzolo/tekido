@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["pinzolo@gmail.com"]
   spec.description   = %q{`Tekido` generates various random value.}
   spec.summary       = %q{A handy little random value generator.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/pinzolo/tekido"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
