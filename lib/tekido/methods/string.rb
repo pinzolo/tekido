@@ -2,22 +2,18 @@
 module Tekido
   module Methods
     module ClassMethods
-      UPPER_CHARS = ('A'..'Z').to_a
-      LOWER_CHARS = ('a'..'z').to_a
-      NUMBER_CHARS = ('0'..'9').to_a
+      UPPER_CHARS  = [*'A'..'Z'].freeze
+      LOWER_CHARS  = [*'a'..'z'].freeze
+      NUMBER_CHARS = [*'0'..'9'].freeze
       EXAMPLE_DOMAINS = ["example.com", "exmple.net", "example.org"] +
                         ["example.jp", "example.co.jp", "example.ne.jp"] +
                         (0..9).map { |i| ["example#{i}.jp", "example#{i}.co.jp", "example#{i}.ne.jp"] }.flatten
+      EXAMPLE_DOMAINS.freeze
 
       def string(options = {})
         size = size_from(options[:size])
         chars = chars_from(options[:chars], *options[:components])
-
-        "".tap do |str|
-          size.times do
-            str << chars.sample
-          end
-        end
+        size.times.map { chars.sample }.join
       end
 
       def email(*bases)
